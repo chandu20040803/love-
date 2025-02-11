@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Happy Valentine's Day, Devi!</title>
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <style>
+    body {
+      background: linear-gradient(45deg, #ffcccc, #ffe6e6);
+      height: 100vh;
+      margin: 0;
+      padding: 0;
+      overflow: hidden;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+    }
+    h1 {
+      font-weight: bold;
+      color: #d6336c;
+    }
+    .heart {
+      font-size: 3rem;
+      color: #ff6699;
+      transition: color 0.5s;
+      animation: beat 1s infinite;
+      margin: 0 5px;
+    }
+    @keyframes beat {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.2); }
+    }
+    .proposal-message {
+      display: none;
+      font-size: 1.75rem;
+      margin-top: 20px;
+      color: #880e4f;
+    }
+    .btn-proposal {
+      margin-top: 30px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container text-center">
+    <h1>Happy Valentine's Day, Devi!</h1>
+    <div id="hearts" class="my-4">
+      <!-- Multiple heart symbols -->
+      <span class="heart">&#10084;</span>
+      <span class="heart">&#10084;</span>
+      <span class="heart">&#10084;</span>
+      <span class="heart">&#10084;</span>
+      <span class="heart">&#10084;</span>
+    </div>
+    <button id="showProposal" class="btn btn-danger btn-lg btn-proposal">Reveal My Heart</button>
+    <div id="proposalMessage" class="proposal-message">
+      <p>Devi, will you be mine forever?</p>
+      <p>My heart beats only for you – let’s create a lifetime of beautiful memories together.</p>
+    </div>
+  </div>
+  
+  <!-- jQuery, Popper.js, and Bootstrap JS -->
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+  
+  <script>
+    // Function to generate a random hex color
+    function getRandomColor() {
+      let letters = '0123456789ABCDEF';
+      let color = '#';
+      for (let i = 0; i < 6; i++) {
+          color += letters[Math.floor(Math.random() * 16)];
+      }
+      return color;
+    }
+    
+    // Dynamically change the color of each heart every 500ms
+    setInterval(() => {
+      document.querySelectorAll('.heart').forEach(heart => {
+        heart.style.color = getRandomColor();
+      });
+    }, 500);
+    
+    // Change the background gradient dynamically every 2 seconds
+    setInterval(() => {
+      document.body.style.background = "linear-gradient(45deg, " + getRandomColor() + ", " + getRandomColor() + ")";
+    }, 2000);
+    
+    // Reveal the proposal message with a fade-in effect on button click
+    document.getElementById('showProposal').addEventListener('click', function() {
+      $('#proposalMessage').fadeIn(2000);
+    });
+  </script>
+</body>
+</html>
